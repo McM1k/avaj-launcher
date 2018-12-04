@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Logger;
 
-public class simulation {
+public class Simulation {
     public static void main(String[] args){
         try {
             BufferedReader reader = new BufferedReader(new FileReader(args[0]));
@@ -20,7 +20,7 @@ public class simulation {
                 WeatherTower weatherTower = new WeatherTower();
                 int simulations = Integer.parseInt(line.split(" ")[0]);
                 if (simulations < 0) {
-                    System.out.println("invalid simulation count " + simulations);
+                    System.out.println("invalid Simulation count " + simulations);
                     System.exit(1);
                 }
                 while ((line = reader.readLine()) != null){
