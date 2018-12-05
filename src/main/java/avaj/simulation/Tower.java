@@ -4,12 +4,10 @@ import avaj.exceptions.FlyableAlreadyRegisteredException;
 import avaj.exceptions.FlyableNotFoundException;
 import avaj.flyable.Flyable;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Tower {
-    private ArrayList<Flyable> observers = new ArrayList<>();
+    private CopyOnWriteArrayList<Flyable> observers = new CopyOnWriteArrayList<>();
 
     private boolean existsInObservers(Flyable flyable){
         for (Flyable fly : this.observers){
@@ -38,9 +36,7 @@ public class Tower {
     }
 
     protected void conditionsChanged(){
-        Iterator<Flyable> it = observers.iterator();
-        while (it.hasNext()){
-            Flyable flyable = it.next();
+        for (Flyable flyable : this.observers) {
             flyable.updateConditions();
 
             if (flyable.getHeight() == 0){
@@ -58,7 +54,7 @@ public class Tower {
         return "Tower says : " + flyable.getClass().getSimpleName() + "#" + flyable.getName() + "(" + flyable.getId() + ") " + regYN + " to weather tower";
     }
 
-    public ArrayList<Flyable> getObservers() {
+    public CopyOnWriteArrayList<Flyable> getObservers() {
         return observers;
     }
 }

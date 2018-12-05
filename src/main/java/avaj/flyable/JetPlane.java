@@ -1,7 +1,6 @@
 package avaj.flyable;
 
 import avaj.exceptions.FlyableAlreadyRegisteredException;
-import avaj.exceptions.FlyableNotFoundException;
 import avaj.simulation.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable {
@@ -31,22 +30,22 @@ public class JetPlane extends Aircraft implements Flyable {
 
         if (weather.equals("SUN")) {
             this.coordinates = new Coordinates(coordinates.getLongitude(),coordinates.getLatitude() + 10,coordinates.getHeight() + 2);
-            message = "A nice weather for effective bombing";
+            message = "Sun : lat + 10, h + 2";
         }
         else if (weather.equals("RAIN")) {
             this.coordinates = new Coordinates(coordinates.getLongitude(),coordinates.getLatitude() + 5,coordinates.getHeight());
-            message = "Too bad it's water instead of missiles falling from the sky";
+            message = "Rain : lat + 5";
         }
         else if (weather.equals("FOG")) {
             this.coordinates = new Coordinates(coordinates.getLongitude(),coordinates.getLatitude() + 1,coordinates.getHeight());
-            message = "napalm makes a lot of smoke";
+            message = "Fog : lat + 1";
         }
         else if (weather.equals("SNOW")) {
             this.coordinates = new Coordinates(coordinates.getLongitude(),coordinates.getLatitude(),coordinates.getHeight() - 7);
-            message = "napalm makes a lot of ashes";
+            message = "Snow : h - 7";
         }
         else {
-            message = "I've lost track of target.";
+            message = "o shite";
         }
         System.out.println(this.composeMessage(type, message));
         if (this.coordinates.getHeight() == 0) {
